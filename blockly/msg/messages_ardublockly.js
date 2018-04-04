@@ -176,3 +176,39 @@ Blockly.Msg.RENAME_INSTANCE = 'Rename instance...';
 Blockly.Msg.NEW_INSTANCE_TITLE = 'New instance name:';
 /// Instances - Confirmation message that a number of instances will be renamed to a new name
 Blockly.Msg.RENAME_INSTANCE_TITLE = 'Rename all "%1" instances to:';
+
+/**
+ * Ardublockly motor robots to infantinho.xyz
+ */
+Blockly.Msg.ARD_INCLUDE = 'Include library file';
+Blockly.Msg.ARD_INCLUDE_TIP = 'Include library file, dont forget to copy file to arduino library folder.';
+Blockly.Msg.ARD_MOTORS_CON = 'Connected to';
+Blockly.Msg.ARD_MOTORS_DIR = 'Direction';
+Blockly.Msg.ARD_MOTORS_F = 'Foward';
+Blockly.Msg.ARD_MOTORS_B = 'Backward';
+Blockly.Msg.ARD_MOTORS_BR = 'Break';
+Blockly.Msg.ARD_MOTORS_S = 'Stop';
+Blockly.Msg.ARD_MOTORS_L = 'Left';
+Blockly.Msg.ARD_MOTORS_R = 'Right';
+Blockly.Msg.ARD_MOTORS_DC = 'DC Motor';
+Blockly.Msg.ARD_MOTORS_DC_SPEED = 'Speed [0-255]';
+Blockly.Msg.ARD_MOTORS_DC_SPEEDA = 'MA Speed [0-255]';
+Blockly.Msg.ARD_MOTORS_DC_SPEEDB = 'MB Speed [0-255]';
+Blockly.Msg.ARD_MOTORS_STEPPER = 'Stepper Motor';
+Blockly.Msg.ARD_MOTORS_STEPPER_CON = 'Connect to';
+Blockly.Msg.ARD_MOTORS_STEPPER_SPR = 'Steps per revolution';
+Blockly.Msg.ARD_MOTORS_STEPPER_RPM = 'Speed(RPM)';
+Blockly.Msg.ARD_MOTORS_STEPPER_STEPS = 'Move to Step';
+Blockly.Msg.ARD_MOTORS_AFDC = 'Adafruit Motor Shield DC';
+Blockly.Msg.ARD_MOTORS_AFST = 'Adafruit Motor Shield Stepper';
+Blockly.Msg.ARD_MOTORS_298SHIELD_TITLE = '298 Shield Control';
+Blockly.Msg.ARD_MOTORS_298SHIELD_TIP = '298 Motor Shield A and B (no brake/current)';
+Blockly.Msg.ARD_MOTORS_298N_TITLE = '298N Control';
+Blockly.Msg.ARD_MOTORS_298N_INI_TITLE = '298N Init';
+Blockly.Msg.ARD_MOTORS_298N_ID = 'ID';
+Blockly.Msg.ARD_MOTORS_298N_EN = 'PWM PIN';
+Blockly.Msg.ARD_MOTORS_298N_MAD = 'MA DIR PIN';
+Blockly.Msg.ARD_MOTORS_298N_MBD = 'MB DIR PIN';
+Blockly.Msg.ARD_SENSORS_SONAR_TPIN = 'Distance in cm, trig pin';
+Blockly.Msg.ARD_SENSORS_SONAR_EPIN = 'echo pin';
+Blockly.Msg.ARD_SENSORS_ISBLACK_PIN = 'Is dark bellow the sensor in pin:';

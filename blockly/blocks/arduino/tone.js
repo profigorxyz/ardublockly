@@ -1,16 +1,3 @@
-/**
- * @license Licensed under the Apache License, Version 2.0 (the "License"):
- *          http://www.apache.org/licenses/LICENSE-2.0
- */
-
-/**
- * @fileoverview Blocks for Arduino Tone generation
- *     The Arduino function syntax can be found at
- *     https://www.arduino.cc/en/Reference/tone
- *
- */
-'use strict';
-
 goog.provide('Blockly.Blocks.tone');
 
 goog.require('Blockly.Blocks');
@@ -19,15 +6,18 @@ goog.require('Blockly.Types');
 /** Common HSV hue for all blocks in this category. */
 Blockly.Blocks.tone.HUE = 250;
 
-Blockly.Blocks['io_tone'] = {
+Blockly.Blocks.io_tone = {
   init: function() {
     this.appendDummyInput()
         .appendField(Blockly.Msg.ARD_SETTONE)
         .appendField(new Blockly.FieldDropdown(
-            Blockly.Arduino.Boards.selected.digitalPins), "TONEPIN");
-    this.appendValueInput("FREQUENCY")
+            Blockly.Arduino.Boards.selected.digitalPins), "PIN");
+    this.appendValueInput("NUM")
         .setCheck(Blockly.Types.NUMBER.checkList)
         .appendField(Blockly.Msg.ARD_TONEFREQ);
+    this.appendValueInput("TPS")
+        .setCheck(Blockly.Types.NUMBER.checkList)
+        .appendField(Blockly.Msg.ARD_TIME_MS);
     this.setInputsInline(true);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
@@ -46,7 +36,7 @@ Blockly.Blocks['io_tone'] = {
         return;  // Block deleted or irrelevant event
     }
     var freq = Blockly.Arduino.valueToCode(
-        this, "FREQUENCY", Blockly.Arduino.ORDER_ATOMIC)
+        this, "NUM", Blockly.Arduino.ORDER_ATOMIC)
     if (freq < 31 || freq > 65535) {
       this.setWarningText(Blockly.Msg.ARD_TONE_WARNING, 'io_tone');
     } else {
@@ -59,12 +49,12 @@ Blockly.Blocks['io_tone'] = {
   }
 };
 
-Blockly.Blocks['io_notone'] = {
+Blockly.Blocks.io_notone = {
   init: function() {
     this.appendDummyInput()
         .appendField(Blockly.Msg.ARD_NOTONE)
         .appendField(new Blockly.FieldDropdown(
-            Blockly.Arduino.Boards.selected.digitalPins), "TONEPIN");
+            Blockly.Arduino.Boards.selected.digitalPins), "PIN");
     this.setPreviousStatement(true);
     this.setNextStatement(true);
     this.setColour(Blockly.Blocks.tone.HUE);

@@ -176,10 +176,15 @@ Ardublockly.TOOLBOX_XML =
 '  <sep></sep>' +
 '  <category id="catAudio" name="Audio">' +
 '    <block type="io_tone">' +
-'      <field name="TONEPIN">0</field>' +
-'      <value name="FREQUENCY">' +
+'      <field name="PIN">0</field>' +
+'      <value name="NUM">' +
 '        <shadow type="math_number">' +
 '          <field name="NUM">220</field>' +
+'        </shadow>' +
+'      </value>' +
+'      <value name="TPS">' +
+'        <shadow type="math_number">' +
+'          <field name="NUM">250</field>' +
 '        </shadow>' +
 '      </value>' +
 '    </block>' +
@@ -187,6 +192,34 @@ Ardublockly.TOOLBOX_XML =
 '  </category>' +
 '  <sep></sep>' +
 '  <category id="catMotors" name="Motors">' +
+'    <block type="dc_afmotor_v1_init"></block>' +
+'    <block type="dc_afmotor_v1_config"></block>' +
+'    <block type="arduino_s">' +
+'      <value name="SPEEDA">' +
+'        <shadow type="math_number">' +
+'          <field name="NUM">255</field>' +
+'        </shadow>' +
+'      </value>' +
+'      <value name="SPEEDB">' +
+'        <shadow type="math_number">' +
+'          <field name="NUM">255</field>' +
+'        </shadow>' +
+'      </value>' +
+'    </block>' +
+'    <block type="l298n_motor_init"></block>' +
+'    <block type="l298n_motor">' +
+'      <value name="SPEED">' +
+'        <shadow type="math_number">' +
+'          <field name="NUM">255</field>' +
+'        </shadow>' +
+'      </value>' +
+'      <value name="ID">' +
+'        <shadow type="text_char">' +
+'          <field name="TEXT">ID1</field>' +
+'        </shadow>' +
+'      </value>' +
+'    </block>' +
+'    <block type="stepper_AFMotor_v1"></block>' +
 '    <block type="servo_write">' +
 '      <value name="SERVO_ANGLE">' +
 '        <block type="math_number">' +
@@ -219,6 +252,11 @@ Ardublockly.TOOLBOX_XML =
 '    </block>' +
 '  </category>' +
 '  <sep></sep>' +
+'  <category id="catSensor" name="Sensors">' +
+'    <block type="sonar"></block>' +
+'    <block type="isblack"></block>' +
+'  </category>' +
+'  <sep></sep>' +
 '  <category id="catComms" name="Comms">' +
 '    <block type="serial_setup"></block>' +
 '    <block type="serial_print"></block>' +
@@ -232,3 +270,4 @@ Ardublockly.TOOLBOX_XML =
 '    <block type="spi_transfer_return"></block>' +
 '  </category>' +
 '</xml>';
+

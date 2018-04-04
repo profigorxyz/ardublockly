@@ -1,14 +1,3 @@
-/**
- * @license Licensed under the Apache License, Version 2.0 (the "License"):
- *          http://www.apache.org/licenses/LICENSE-2.0
- */
-
-/**
- * @fileoverview Code generator for Arduino Digital and Analogue input/output.
- *     Arduino built in function docs: http://arduino.cc/en/Reference/HomePage
- */
-'use strict';
-
 goog.provide('Blockly.Arduino.tone');
 
 goog.require('Blockly.Arduino');
@@ -21,8 +10,23 @@ goog.require('Blockly.Arduino');
  * @param {!Blockly.Block} block Block to generate the code from.
  * @return {array} Completed code with order of operation.
  */
+Blockly.Arduino.io_tone = function() {
+  var value_pin = Blockly.Arduino.valueToCode(this, 'PIN', Blockly.Arduino.ORDER_ATOMIC);
+  var value_num = Blockly.Arduino.valueToCode(this, 'NUM', Blockly.Arduino.ORDER_ATOMIC);
+  var value_tps = Blockly.Arduino.valueToCode(this, 'TPS', Blockly.Arduino.ORDER_ATOMIC);
+  Blockly.Arduino.setups_['setup_output'+value_pin] = 'pinMode('+value_pin+', OUTPUT);';
+  var code = 'tone('+value_pin+','+value_num+','+value_tps+');\n';
+  return code;
+};
 
-Blockly.Arduino['io_tone'] = function(block) {
+Blockly.Arduino.io_notone = function() {
+  var value_pin = Blockly.Arduino.valueToCode(this, 'PIN', Blockly.Arduino.ORDER_ATOMIC);
+  Blockly.Arduino.setups_['setup_output'+value_pin] = 'pinMode('+value_pin+', OUTPUT);';
+  var code = 'noTone('+value_pin+');\n';
+  return code;
+};
+
+/*Blockly.Arduino['io_tone'] = function(block) {
   var pin = block.getFieldValue('TONEPIN');
   var freq = Blockly.Arduino.valueToCode(block, 'FREQUENCY', Blockly.Arduino.ORDER_ATOMIC);
   Blockly.Arduino.reservePin(
@@ -45,4 +49,4 @@ Blockly.Arduino['io_notone'] = function(block) {
 
   var code = 'noTone(' + pin + ');\n';
   return code;
-};
+};*/
