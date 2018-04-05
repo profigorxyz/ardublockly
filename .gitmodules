@@ -4,3 +4,6 @@
 [submodule "package/ardublocklydocs/ardublockly.wiki"]
 	path = package/ardublocklydocs/ardublockly.wiki
 	url = https://github.com/carlosperate/ardublockly.wiki.git
+[submodule "arduino/ard64/libraries/Adafruit-Motor-Shield-library"]
+	path = arduino/ard64/libraries/Adafruit-Motor-Shield-library
+	url = git@github.com:adafruit/Adafruit-Motor-Shield-library.git
