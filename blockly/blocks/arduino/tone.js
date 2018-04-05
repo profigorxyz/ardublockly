@@ -6,24 +6,23 @@ goog.require('Blockly.Types');
 /** Common HSV hue for all blocks in this category. */
 Blockly.Blocks.tone.HUE = 250;
 
-Blockly.Blocks.io_tone = {
+Blockly.Blocks['io_tone'] = {
   init: function() {
-    this.appendDummyInput()
+    this.setColour(Blockly.Blocks.tone.HUE);
+    this.setHelpUrl('https://www.arduino.cc/en/Reference/tone');
+    this.appendValueInput('FREQUENCY')
         .appendField(Blockly.Msg.ARD_SETTONE)
         .appendField(new Blockly.FieldDropdown(
-            Blockly.Arduino.Boards.selected.digitalPins), "PIN");
-    this.appendValueInput("NUM")
-        .setCheck(Blockly.Types.NUMBER.checkList)
-        .appendField(Blockly.Msg.ARD_TONEFREQ);
+            Blockly.Arduino.Boards.selected.digitalPins), "TPIN")
+        .appendField(Blockly.Msg.ARD_TONEFREQ)
+        .setCheck(Blockly.Types.NUMBER.checkList);
     this.appendValueInput("TPS")
+        .setAlign(Blockly.ALIGN_RIGHT)
         .setCheck(Blockly.Types.NUMBER.checkList)
         .appendField(Blockly.Msg.ARD_TIME_MS);
-    this.setInputsInline(true);
     this.setPreviousStatement(true);
     this.setNextStatement(true);
-    this.setColour(Blockly.Blocks.tone.HUE);
     this.setTooltip(Blockly.Msg.ARD_TONE_TIP);
-    this.setHelpUrl('https://www.arduino.cc/en/Reference/tone');
   },
   /**
    * Called whenever anything on the workspace changes.
@@ -42,6 +41,13 @@ Blockly.Blocks.io_tone = {
     } else {
       this.setWarningText(null, 'io_tone');
     }
+  },
+  /**
+   * Updates the content of the the pin related fields.
+   * @this Blockly.Block
+   */
+  updateFields: function() {
+    Blockly.Arduino.Boards.refreshBlockFieldDropdown(this, 'TPIN', 'digitalPins');
   },
   /** @return {!string} The type of input value for the block, an integer. */
   getBlockType: function() {

@@ -14,7 +14,6 @@ Blockly.Arduino["sonar"] = function(block) {
     "{\n"+
     "  int value = sonar.ping_cm();\n"+
     "  if (value == 0) { value=1000; }\n"+
-    "  delay(50);\n"+
     "  return value;\n"+
     "}";
   var code = 'distance_cm()';

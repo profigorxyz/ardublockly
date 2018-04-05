@@ -10,13 +10,20 @@ goog.require('Blockly.Arduino');
  * @param {!Blockly.Block} block Block to generate the code from.
  * @return {array} Completed code with order of operation.
  */
-Blockly.Arduino.io_tone = function() {
-  var value_pin = Blockly.Arduino.valueToCode(this, 'PIN', Blockly.Arduino.ORDER_ATOMIC);
-  var value_num = Blockly.Arduino.valueToCode(this, 'NUM', Blockly.Arduino.ORDER_ATOMIC);
-  var value_tps = Blockly.Arduino.valueToCode(this, 'TPS', Blockly.Arduino.ORDER_ATOMIC);
-  Blockly.Arduino.setups_['setup_output'+value_pin] = 'pinMode('+value_pin+', OUTPUT);';
-  var code = 'tone('+value_pin+','+value_num+','+value_tps+');\n';
-  return code;
+Blockly.Arduino['io_tone'] = function(block) {
+  var values = [
+    block.getFieldValue('TPIN'),
+    Blockly.Arduino.valueToCode(block, 'FREQUENCY', Blockly.Arduino.ORDER_ATOMIC),
+    Blockly.Arduino.valueToCode(block, 'TPS', Blockly.Arduino.ORDER_ATOMIC)
+  ];
+  var pin = values[0];
+  var freq = values[1];
+  var tps = values[2];
+  Blockly.Arduino.reservePin(
+      block, pin, Blockly.Arduino.PinTypes.OUTPUT, 'Tone Pin');
+  Blockly.Arduino.setups_['setup_output'+pin] = 'pinMode('+pin+', OUTPUT);';
+  var code = 'tone('+pin+','+freq+','+tps+');\n';
+  return [code, Blockly.Arduino.ORDER_ATOMIC];
 };
 
 Blockly.Arduino.io_notone = function() {
